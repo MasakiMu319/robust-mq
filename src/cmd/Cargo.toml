@@ -1,0 +1,9 @@
+[package]
+name = "cmd"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+[[bin]]
+name = "placement-center"
+path = "src/placement-center/server.rs"
