@@ -4,6 +4,7 @@ version.workspace = true
 edition.workspace = true
 
 [dependencies]
+clap = { version = "4.5.18", features = ["derive", "env"] }
 [[bin]]
 name = "placement-center"
 path = "src/placement-center/server.rs"
