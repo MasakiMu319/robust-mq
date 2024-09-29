@@ -1,4 +1,9 @@
 use clap::Parser;
+use common_base::{
+    config::placement_center::{init_placement_center_conf_by_path, placement_center_conf},
+    log::placement_center::init_placement_center_log,
+};
+use log::info;
 
 pub const DEFAULT_PLACEMENT_CENTER_CONFIG: &str = "config/placement-center.toml";
 
@@ -12,5 +17,11 @@ struct ArgsParams {
 
 fn main() {
     let args = ArgsParams::parse();
-    println!("conf path: {:?}", args.conf);
+    init_placement_center_conf_by_path(&args.conf);
+    init_placement_center_log();
+
+    let conf = placement_center_conf();
+    info!("{:?}", conf);
+
+    info!("Server started.")
 }

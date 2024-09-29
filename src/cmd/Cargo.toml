@@ -5,6 +5,10 @@ edition.workspace = true
 
 [dependencies]
 clap = { version = "4.5.18", features = ["derive", "env"] }
+serde = { workspace = true, features = ["derive"] }
+
+common-base = { workspace = true }
+log = "0.4.22"
 [[bin]]
 name = "placement-center"
 path = "src/placement-center/server.rs"
