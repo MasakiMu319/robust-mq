@@ -8,7 +8,9 @@ clap = { version = "4.5.18", features = ["derive", "env"] }
 serde = { workspace = true, features = ["derive"] }
 
 common-base = { workspace = true }
+placement-center = { workspace = true }
 log = "0.4.22"
+tokio = { version = "1.40.0", features = ["signal"] }
 [[bin]]
 name = "placement-center"
 path = "src/placement-center/server.rs"

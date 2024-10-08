@@ -4,4 +4,12 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+axum = "0.7.7"
 serde = { workspace = true, features = ["derive"] }
+tokio = { version = "1.40.0", features = ["signal"] }
+
+common-base = { path = "../common/base" }
+protocol = { path = "../protocol" }
+log = "0.4.22"
+dashmap = "6.1.0"
+tonic = "0.12.3"

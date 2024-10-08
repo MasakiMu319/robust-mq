@@ -4,6 +4,8 @@ use common_base::{
     log::placement_center::init_placement_center_log,
 };
 use log::info;
+use placement_center::start_server;
+use tokio::sync::broadcast;
 
 pub const DEFAULT_PLACEMENT_CENTER_CONFIG: &str = "config/placement-center.toml";
 
@@ -15,7 +17,8 @@ struct ArgsParams {
     conf: String,
 }
 
-fn main() {
+#[tokio::main(flavor = "current_thread")]
+async fn main() {
     let args = ArgsParams::parse();
     init_placement_center_conf_by_path(&args.conf);
     init_placement_center_log();
@@ -23,5 +26,6 @@ fn main() {
     let conf = placement_center_conf();
     info!("{:?}", conf);
 
-    info!("Server started.")
+    let (stop_send, _) = broadcast::channel(2);
+    start_server(stop_send).await;
 }
